@@ -1,0 +1,5 @@
+#Mass changing of questions options
+UPDATE `mdl_qtype_essay_options` set responseformat="noinline", attachmentsrequired=1 where id IN 
+(SELECT id FROM 
+ 	(SELECT `mdl_qtype_essay_options`.id FROM `mdl_question`,`mdl_qtype_essay_options` where category IN (140,141,142,143,144) and `mdl_qtype_essay_options`.questionid=`mdl_question`.id) as A
+)
